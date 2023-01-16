@@ -1,0 +1,45 @@
+.menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  margin-bottom: 25px;
+
+  a {
+    display: block;
+  }
+}
+
+.menuSocBtnsWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.menuSocBtn {
+  margin-left: 25px;
+  width: 32px;
+  height: 42px;
+  overflow: hidden;
+
+  &:nth-child(1) {
+    margin-left: 0;
+  }
+
+  &:hover {
+    &:after {
+      transform: translateX(0);
+    }
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    transform: translateX(-32px);
+    background: #FFF;
+    height: 3px;
+    width: 100%;
+    transition: transform ease 0.45s 0s;
+  }
+}

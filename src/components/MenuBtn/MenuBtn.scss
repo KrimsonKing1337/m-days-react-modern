@@ -1,0 +1,56 @@
+.menuBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  cursor: pointer;
+  display: block;
+  overflow: hidden;
+  width: 44px;
+  height: 32px;
+}
+
+.menuBtnHelper {
+  display: block;
+  position: absolute;
+  top: 15px;
+  left: 6px;
+  right: 6px;
+  height: 1px;
+  background: rgba(#fff, 1);
+  transition: background ease 0.3s 0s;
+
+  .menuBtn.isActive & {
+    background: rgba(#fff, 0);
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+    transition: all ease 0.3s 0s;
+  }
+
+  &:before {
+    top: -10px;
+
+    .menuBtn.isActive & {
+      top: 0;
+      transform: rotate(45deg);
+    }
+  }
+
+  &:after {
+    bottom: -10px;
+
+    .menuBtn.isActive & {
+      bottom: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}

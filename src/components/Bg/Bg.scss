@@ -1,0 +1,24 @@
+.bg,
+.bgNext {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: #fff no-repeat center;
+  background-size: cover;
+}
+
+.bgNext {
+  left: -200%;
+}
+
+.bg {
+  opacity: 1;
+  transition: opacity ease 0.3s 0s;
+
+  &.isChanging {
+    opacity: 0;
+  }
+}
