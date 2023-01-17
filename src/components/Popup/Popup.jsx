@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-transition-group';
 import propTypes from 'prop-types';
 import autobind from 'autobind-decorator';
 
@@ -16,14 +15,14 @@ export default class Popup extends React.Component {
 
     this.state = {
       activeContent: 'menu',
-      isInit: true
+      isInit: true,
     };
   }
 
   componentDidMount() {
     this.timer = setTimeout(() => {
       this.setState({
-        isInit: false
+        isInit: false,
       });
     }, 50); // prevent transition of element when it's got to DOM
   }
@@ -40,7 +39,7 @@ export default class Popup extends React.Component {
   toggleStateContent(state) {
     if (typeof state === 'string') {
       this.setState({
-        activeContent: state
+        activeContent: state,
       });
     }
   }
@@ -52,32 +51,23 @@ export default class Popup extends React.Component {
     const popupWrapperClassName = classNames({
       [styles.popupWrapper]: true,
       [styles.isActive]: isActive === true,
-      [styles.isInit]: isInit === true
+      [styles.isInit]: isInit === true,
     });
 
     return (
       <div className={popupWrapperClassName}>
         <div className={styles.popup}>
-          <ReactCSSTransitionGroup
-            transitionName={{
-              enter: styles.popupEnter,
-              enterActive: styles.popupEnterActive,
-              leave: styles.popupLeave,
-              leaveActive: styles.popupLeaveActive
-            }}
-            transitionEnterTimeout={300}
-            transitionLeaveTimeout={300}>
-            {activeContent === 'menu' && (
-              <Menu
-                routeProps={routeProps}
-                toggleStateContent={this.toggleStateContent}
-                toggleStateMenu={toggleState} />
-            )}
+          {activeContent === 'menu' && (
+            <Menu
+              routeProps={routeProps}
+              toggleStateContent={this.toggleStateContent}
+              toggleStateMenu={toggleState}
+            />
+          )}
 
-            {activeContent === 'donate' && (
-              <Donate toggleStateContent={this.toggleStateContent} />
-            )}
-          </ReactCSSTransitionGroup>
+          {activeContent === 'donate' && (
+            <Donate toggleStateContent={this.toggleStateContent} />
+          )}
         </div>
       </div>
     );
@@ -87,9 +77,9 @@ export default class Popup extends React.Component {
 Popup.propTypes = {
   routeProps: routePropsShape.isRequired,
   isActive: propTypes.bool,
-  toggleState: propTypes.func.isRequired
+  toggleState: propTypes.func.isRequired,
 };
 
 Popup.defaultProps = {
-  isActive: false
+  isActive: false,
 };

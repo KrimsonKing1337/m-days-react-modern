@@ -20,7 +20,7 @@ module.exports = function (api) {
   ];
 
   const plugins = [
-    ['@babel/plugin-proposal-decorators', { decoratorsBeforeExport: true } ],
+    ['@babel/plugin-proposal-decorators', { legacy: true } ],
     ['@babel/plugin-proposal-class-properties'],
     ['@babel/plugin-transform-object-assign'],
     ['@babel/transform-runtime', { useESModules: true, regenerator: true }],

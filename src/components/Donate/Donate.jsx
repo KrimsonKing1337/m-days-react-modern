@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-transition-group';
 import propTypes from 'prop-types';
 import autobind from 'autobind-decorator';
 import BtnLink from 'components/BtnLink';
@@ -14,7 +13,7 @@ export default class Donate extends React.Component {
     super();
 
     this.state = {
-      instructionIsActive: false
+      instructionIsActive: false,
     };
   }
 
@@ -27,11 +26,11 @@ export default class Donate extends React.Component {
 
     if (typeof state === 'boolean') {
       this.setState({
-        instructionIsActive: state
+        instructionIsActive: state,
       });
     } else {
       this.setState({
-        instructionIsActive: !instructionIsActive
+        instructionIsActive: !instructionIsActive,
       });
     }
   }
@@ -64,13 +63,13 @@ export default class Donate extends React.Component {
     function payItemBtnClassNameWithModifier(modifier) {
       return classNames({
         [styles.payItemBtn]: true,
-        [modifier]: true
+        [modifier]: true,
       });
     }
 
     const qiwiClassName = classNames({
       [styles.payItem]: true,
-      [styles.instructionIsActive]: instructionIsActive === true
+      [styles.instructionIsActive]: instructionIsActive === true,
     });
 
     return (
@@ -97,54 +96,52 @@ export default class Donate extends React.Component {
                   <input
                     type="hidden"
                     name="encrypted"
-                    value={payPalKey} />
-                  <input type="image" src="/src/assets/img/paypal.png" alt="" name="submit" />
+                    value={payPalKey}
+                  />
+                  <input
+                    type="image"
+                    src="/src/assets/img/paypal.png"
+                    alt=""
+                    name="submit"
+                  />
                   <img
                     src="https://www.paypalobjects.com/ru_RU/i/scr/pixel.gif"
                     alt=""
                     width="1"
-                    height="1" />
+                    height="1"
+                  />
                 </form>
               </div>
             </div>
             <button
               type="button"
               className={qiwiClassName}
-              onClick={this.handleQiwiClick}>
-              <ReactCSSTransitionGroup
-                transitionName={{
-                  enter: styles.qiwiEnter,
-                  enterActive: styles.qiwiEnterActive,
-                  leave: styles.qiwiLeave,
-                  leaveActive: styles.qiwiLeaveActive
-                }}
-                transitionEnterTimeout={500}
-                transitionLeaveTimeout={300}>
-                {!instructionIsActive && (
-                  <div className={payItemBtnClassNameWithModifier(styles.qiwi)} />
-                )}
+              onClick={this.handleQiwiClick}
+            >
+              {!instructionIsActive && (
+                <div className={payItemBtnClassNameWithModifier(styles.qiwi)} />
+              )}
 
-                {instructionIsActive && (
-                  <div className={styles.payItemInstruction}>
-                    Go to&nbsp;
-                    <LinkExternal href="https://visa.qiwi.ru/transfer/form.action" target="_blank">
-                      link.
-                    </LinkExternal>
-                    <br />
-                    Input this number:
-                    <br />
-                    +7 965 422 59 82
-                    {/* eslint-disable */}
-                    <div
-                      className={styles.payItemInstructionClose}
-                      title="Close"
-                      onClick={this.handleCloseQiwiClick}>
-                      x
-                    </div>
-                    {/* eslint-enable */}
+              {instructionIsActive && (
+                <div className={styles.payItemInstruction}>
+                  Go to&nbsp;
+                  <LinkExternal href="https://visa.qiwi.ru/transfer/form.action" target="_blank">
+                    link.
+                  </LinkExternal>
+                  <br />
+                  Input this number:
+                  <br />
+                  +7 965 422 59 82
+                  {/* eslint-disable */}
+                  <div
+                    className={styles.payItemInstructionClose}
+                    title="Close"
+                    onClick={this.handleCloseQiwiClick}>
+                    x
                   </div>
-                )}
-              </ReactCSSTransitionGroup>
+                  {/* eslint-enable */}
+                </div>
+              )}
             </button>
             <div className={styles.payItem}>
               <div className={payItemBtnClassNameWithModifier(styles.webmoney)}>
@@ -169,5 +166,5 @@ export default class Donate extends React.Component {
 }
 
 Donate.propTypes = {
-  toggleStateContent: propTypes.func.isRequired
+  toggleStateContent: propTypes.func.isRequired,
 };

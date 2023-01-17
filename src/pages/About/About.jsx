@@ -1,6 +1,6 @@
 import React from 'react';
 import { v4 } from 'uuid';
-import MenuAndPopup from 'components/MenuAndPopup';
+// import MenuAndPopup from 'components/MenuAndPopup';
 import LinkExternal from 'components/LinkExternal';
 import members from './members';
 import styles from './About.scss';
@@ -17,7 +17,7 @@ export default class About extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <MenuAndPopup routeProps={routeProps} />
+        {/*<MenuAndPopup routeProps={routeProps} />*/}
         <div className={styles.about}>
           <div className={styles.aboutTitle}>
             Project Owners
